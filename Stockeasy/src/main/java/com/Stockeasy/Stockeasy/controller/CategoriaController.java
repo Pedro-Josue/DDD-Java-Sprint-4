@@ -33,7 +33,7 @@ public class CategoriaController {
     }
 
     //exclui categoria
-    @DeleteMapping("/exclui/{id}")
+    @DeleteMapping("/excluir/{id}")
     public ResponseEntity<String> excluiCategoria(@PathVariable Long id){
         return categoriaService.excluiCategoria(id);
     }

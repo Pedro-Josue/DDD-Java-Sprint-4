@@ -1,5 +1,6 @@
 package com.Stockeasy.Stockeasy.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 
 @Entity
@@ -11,6 +12,7 @@ public class Material {
     private String nome;
     private int quantidade;
     @ManyToOne
+    @JsonIgnoreProperties("materiais")
     private Categoria categoria;
 
     //construtor
