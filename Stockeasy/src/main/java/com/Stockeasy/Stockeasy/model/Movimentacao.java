@@ -10,6 +10,7 @@ public class Movimentacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Enumerated(EnumType.STRING)
     private Tipo tipo;
     private int quantidade;
     private LocalDateTime dataHora;
