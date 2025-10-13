@@ -12,14 +12,17 @@ public class Movimentacao {
     private Long id;
     @Enumerated(EnumType.STRING)
     private Tipo tipo;
+    @ManyToOne
+    private Usuario usuario;
     private int quantidade;
     private LocalDateTime dataHora;
     @ManyToOne
     private Material material;
 
     //construtor
-    public Movimentacao(Tipo tipo, int quantidade, LocalDateTime dataHora, Material material) {
+    public Movimentacao(Tipo tipo, Usuario usuario, int quantidade, LocalDateTime dataHora, Material material) {
         this.tipo = tipo;
+        this.usuario = usuario;
         this.quantidade = quantidade;
         this.dataHora = dataHora;
         this.material = material;
@@ -44,6 +47,9 @@ public class Movimentacao {
     public Material getMaterial() {
         return material;
     }
+    public Usuario getUsuario() {
+        return usuario;
+    }
 
     //setters
     public void setMaterial(Material material) {
@@ -57,5 +63,8 @@ public class Movimentacao {
     }
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
+    }
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
