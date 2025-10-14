@@ -1,7 +1,7 @@
 package com.Stockeasy.Stockeasy.controller;
 
 import com.Stockeasy.Stockeasy.model.Usuario;
-import com.Stockeasy.Stockeasy.service.TokenService;
+import com.Stockeasy.Stockeasy.config.security.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

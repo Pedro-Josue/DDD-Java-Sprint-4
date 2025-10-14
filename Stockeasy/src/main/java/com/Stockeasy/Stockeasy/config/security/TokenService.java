@@ -1,4 +1,4 @@
-package com.Stockeasy.Stockeasy.service;
+package com.Stockeasy.Stockeasy.config.security;
 
 import com.Stockeasy.Stockeasy.model.Usuario;
 import com.auth0.jwt.JWT;
