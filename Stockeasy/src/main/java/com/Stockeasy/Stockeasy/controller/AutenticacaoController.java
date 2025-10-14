@@ -1,0 +1,32 @@
+package com.Stockeasy.Stockeasy.controller;
+
+import com.Stockeasy.Stockeasy.model.Usuario;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Map;
+
+
+@RestController
+@RequestMapping("/login")
+public class AutenticacaoController {
+    //utilizando authentication manager do spring para autenticar o usuario
+    @Autowired
+    private AuthenticationManager authenticationManager;
+
+    @PostMapping
+    public ResponseEntity logar(@RequestBody Map<String, String> body){
+        String login = body.get("login");
+        String senha = body.get("senha");
+
+        var token = new UsernamePasswordAuthenticationToken(login, senha);
+        var authentication = authenticationManager.authenticate(token);
+        return ResponseEntity.ok().build();
+    }
+}
