@@ -1,6 +1,7 @@
 package com.Stockeasy.Stockeasy.controller;
 
 import com.Stockeasy.Stockeasy.model.Usuario;
+import com.Stockeasy.Stockeasy.service.TokenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -19,6 +20,8 @@ public class AutenticacaoController {
     //utilizando authentication manager do spring para autenticar o usuario
     @Autowired
     private AuthenticationManager authenticationManager;
+    @Autowired
+    private TokenService tokenService;
 
     @PostMapping
     public ResponseEntity logar(@RequestBody Map<String, String> body){
@@ -27,6 +30,6 @@ public class AutenticacaoController {
 
         var token = new UsernamePasswordAuthenticationToken(login, senha);
         var authentication = authenticationManager.authenticate(token);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(tokenService.geraToken((Usuario) authentication.getPrincipal()));
     }
 }
