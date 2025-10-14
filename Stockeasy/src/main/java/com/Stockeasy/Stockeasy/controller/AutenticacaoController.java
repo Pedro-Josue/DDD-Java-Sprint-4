@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.HashMap;
 import java.util.Map;
 
 
@@ -24,12 +25,16 @@ public class AutenticacaoController {
     private TokenService tokenService;
 
     @PostMapping
-    public ResponseEntity logar(@RequestBody Map<String, String> body){
+    public ResponseEntity<?> logar(@RequestBody Map<String, String> body){
         String login = body.get("login");
         String senha = body.get("senha");
 
         var token = new UsernamePasswordAuthenticationToken(login, senha);
         var authentication = authenticationManager.authenticate(token);
-        return ResponseEntity.ok(tokenService.geraToken((Usuario) authentication.getPrincipal()));
+
+        String JWT = tokenService.geraToken((Usuario) authentication.getPrincipal());
+        Map<String, String> resposta = new HashMap<>();
+        resposta.put("token", JWT);
+        return ResponseEntity.ok(resposta);
     }
 }
