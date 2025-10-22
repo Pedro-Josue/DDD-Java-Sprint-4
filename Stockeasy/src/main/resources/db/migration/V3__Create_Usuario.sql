@@ -1,0 +1,5 @@
+CREATE TABLE usuario (
+    id BIGSERIAL PRIMARY KEY,
+    login VARCHAR(255) NOT NULL UNIQUE,
+    senha VARCHAR(255) NOT NULL
+);
