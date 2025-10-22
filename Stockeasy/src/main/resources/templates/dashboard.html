@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Stockeasy - Painel</title>
+    <link th:href="@{/css/styles.css}" rel="stylesheet" />
+</head>
+<body>
+<!-- include header fragment -->
+<div th:replace="layout :: header"></div>
+
+<div class="container page" id="app">
+    <section id="view-dashboard" class="view">
+        <div class="grid stats">
+            <div class="card stat">
+                <h3 id="count-materials">0</h3>
+                <p>Materiais</p>
+            </div>
+            <div class="card stat">
+                <h3 id="count-categories">0</h3>
+                <p>Categorias</p>
+            </div>
+            <div class="card stat">
+                <h3 id="count-movimentacoes">0</h3>
+                <p>Movimentações</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2>Materiais</h2>
+            <div id="materials-section"></div>
+        </div>
+
+        <div class="card">
+            <h2>Movimentações Recentes</h2>
+            <div id="movements-section"></div>
+        </div>
+    </section>
+
+    <!-- UI dinâmica: materials / categories / movimentacoes são carregadas via JS -->
+</div>
+
+<div th:replace="layout :: footer"></div>
+
+<script th:src="@{/js/app.js}"></script>
+<script>
+    // comportamento ao carregar a página
+    document.addEventListener('DOMContentLoaded', () => {
+        if (!auth.isAuthenticated()) {
+            location.href = '/login';
+            return;
+        }
+        // show logout
+        document.getElementById('btn-logout').style.display = 'inline-block';
+        // initial load dashboard info
+        ui.loadDashboard();
+    });
+</script>
+</body>
+</html>

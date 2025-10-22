@@ -1,0 +1,78 @@
+/* simples e responsivo */
+:root{
+  --bg:#f6f8fa;
+  --card:#ffffff;
+  --accent:#1760a5;
+  --accent-2:#1e9a6a;
+  --muted:#6b7280;
+  --shadow: 0 6px 18px rgba(14,30,37,0.06);
+  --radius:10px;
+  font-family: Inter, Roboto, system-ui, -apple-system, "Segoe UI", "Helvetica Neue", Arial;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--bg);
+  color:#0f172a;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* nav */
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:1rem;
+  padding:14px 20px;
+  background: linear-gradient(90deg, #ffffff, #fbfdff);
+  box-shadow: var(--shadow);
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+
+.brand{display:flex;gap:10px;align-items:center}
+.brand img{height:36px}
+.brand-name{font-weight:700;color:var(--accent);text-decoration:none;font-size:1.1rem}
+
+.nav-actions{display:flex;gap:8px;align-items:center}
+.btn-nav{background:none;border:0;padding:8px 12px;border-radius:8px;cursor:pointer}
+.btn-nav:hover{background:#eef3fb}
+.btn-primary{background:var(--accent);color:white;border:0;padding:10px 14px;border-radius:8px;cursor:pointer}
+.btn-ghost{background:transparent;border:1px solid #e6e9ef;padding:8px 12px;border-radius:8px;cursor:pointer}
+
+/* layout */
+.container{max-width:1100px;margin:28px auto;padding:0 18px}
+.card{background:var(--card);padding:16px;border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:18px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.stat{padding:18px;text-align:center}
+.stat h3{margin:0;font-size:1.6rem;color:var(--accent)}
+
+/* tables */
+table{width:100%;border-collapse:collapse}
+th,td{padding:10px;border-bottom:1px solid #f1f4f8;text-align:left}
+th{color:var(--muted);font-size:0.9rem}
+
+/* forms */
+.form-group{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}
+.form-group input, .form-group select {padding:10px;border-radius:8px;border:1px solid #e8eef7;background:#fbfdff}
+.form-actions{display:flex;gap:8px;align-items:center}
+
+/* login */
+.centered-page{display:flex;align-items:center;justify-content:center;height:100vh}
+.login-card{width:360px;text-align:left;padding:28px}
+.login-card h1{margin:0 0 4px 0;color:var(--accent)}
+.login-card .muted{color:var(--muted);font-size:0.9rem}
+
+/* responsive */
+@media (max-width:900px){
+  .grid{grid-template-columns:repeat(1,1fr)}
+}
+
+/* small helpers */
+.error{color:#b91c1c;margin-top:8px}
+.muted{color:var(--muted)}
+.btn-small{padding:6px 8px;border-radius:6px;border:0;cursor:pointer}
+.link-like{background:none;border:0;color:var(--accent);cursor:pointer}

@@ -3,6 +3,7 @@ package com.Stockeasy.Stockeasy.service;
 import com.Stockeasy.Stockeasy.model.Material;
 import com.Stockeasy.Stockeasy.repository.MaterialRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -39,10 +40,14 @@ public class MaterialService {
 
     public ResponseEntity<String> excluiMaterial(Long id) {
         Optional<Material> materialOptional = materialRepository.findById(id);
-        if (materialOptional.isPresent()){
+        if (materialOptional.isPresent()) {
             Material existente = materialOptional.get();
-            materialRepository.delete(existente);
-            return ResponseEntity.status(200).body("Material excluído com sucesso");
+            try {
+                materialRepository.delete(existente);
+                return ResponseEntity.status(200).body("Material excluído com sucesso");
+            } catch (DataIntegrityViolationException e) {
+                return ResponseEntity.status(409).body("Não é possível excluir o material, pois ele está vinculado a uma movimentação.");
+            }
         } else {
             return ResponseEntity.status(404).body("Material não encontrado");
         }
