@@ -1,0 +1,11 @@
+Integrantes do grupo:
+
+João Pedro Kraide Máximo RM563166
+Nicolas Caciolato Reis  RM556506
+Pedro Josué Pereira Almeida RM554913
+
+Resumo da solução:
+
+A FuturePath é uma plataforma que conecta pessoas a trilhas de aprendizagem destinadas ao desenvolvimento de competências essenciais
+para o mercado de trabalho de 2030 em diante. O foco é estimular a educação contínua, o upskilling e o reskilling, alinhada às demandas
+de transformação digital, IA, automação e novas economias.

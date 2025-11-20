@@ -36,7 +36,12 @@ public class SecurityConfigurations {
                             "/js/**",
                             "/images/**",
                             "/webjars/**",
-                            "/favicon.ico"
+                            "/favicon.ico",
+                            "/swagger-ui/**",
+                            "/v3/api-docs/**",
+                            "/v3/api-docs.yaml",
+                            "/swagger-resources/**",
+                            "/swagger-ui.html"
                     ).permitAll();
 
                     // liberar acesso ao HTML das views (GET)
